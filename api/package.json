@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "REST API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hann171/YPK_EkaPralaya.git"
+  },
+  "author": "Hengky Wijaya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hann171/YPK_EkaPralaya/issues"
+  },
+  "homepage": "https://github.com/hann171/YPK_EkaPralaya#readme"
+}
