@@ -14,11 +14,13 @@ import {
     NavbarText
 } from 'reactstrap';
 import {NavLink} from 'react-router-dom'
+import { AuthContext } from '../App';
 
 const NavbarComp = (props) => {
     const [isOpen, setIsOpen] = useState(false);
-
     const toggle = () => setIsOpen(!isOpen);
+
+    const {state,dispatch} = useContext(AuthContext)
 
     return (
         <div>
@@ -31,6 +33,13 @@ const NavbarComp = (props) => {
                             <NavLink to="/user/register" className='nav-link'>Register</NavLink>
                         </NavItem>
                     </Nav>
+                    <NavbarText>
+                        <Button onClick={()=>dispatch({type:"LOGOUT"})}>
+                            {state.isAuthenticated && (
+                                "LOGOUT"
+                            )}
+                        </Button>
+                    </NavbarText>
                 </Collapse>
             </Navbar>
         </div>
