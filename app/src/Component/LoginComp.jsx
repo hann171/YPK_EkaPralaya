@@ -1,8 +1,10 @@
 import React, { Fragment, useContext, useState } from 'react'
 import axios from 'axios'
-import { CardImg, Container, Col, Row, Form, FormGroup, Label, Input, Button } from 'reactstrap'
+import { CardImg, Container, Col, Row, Form, FormGroup, Label, Input } from 'reactstrap'
 import { AuthContext } from '../App'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import "./CSS/LoginPage.css"
+
 const qs = require('querystring')
 
 const api = 'http://localhost:3002'
@@ -62,11 +64,18 @@ export default function LoginComp() {
 
                 throw res
             })
-            setData({
-                ...data,
-                username:'',
-                password:''
-            })
+        setData({
+            ...data,
+            username: '',
+            password: ''
+        })
+    }
+
+    function mouseHover(e) {
+        e.target.style.background = '#1caca9';
+    }
+    function mouseHoverLeave(e) {
+        e.target.style.background = '#24CFCB';
     }
 
     return (
@@ -74,45 +83,50 @@ export default function LoginComp() {
             <Container>
                 <br />
                 <Row>
-                    <Col>
-                        <CardImg width="100%" src="https://placeimg.com/640/380/people/" />
-                    </Col>
-                    <Col>
-                        <Form className="form" onSubmit={handleFormSubmit}>
-                            <Label for="Username">Username</Label>
-                            <FormGroup>
-                                <Row>
-                                    <Col>
-                                        <Input type="text" name="username" id="UsernameField" value={data.username} onChange={handleInputChange} placeholder="Masukan username" />
-                                    </Col>
-                                </Row>
-                            </FormGroup>
-                            <Label for="Password">Password</Label>
-                            <FormGroup>
-                                <Row>
-                                    <Col>
-                                        <Input type="password" name="password" id="PasswordField" value={data.password} onChange={handleInputChange} placeholder="Masukan password" />
-                                    </Col>
-                                </Row>
-                            </FormGroup>
+                    <div className="rectangle2">
+                        <p className="ypk_text">Yayasan Pembantu Kematian</p>
+                        <img className="ypk_logo" src={require('../Assets/Logo.png')} alt="" />
+                        <p className="p_address"> Jl. MT. Haryono No. 146, Purwokerto, <br />Jawa Tengah</p>
+                        <img className="service" src={require('../Assets/24jam.png')} alt="" />
+                        <div className="link_daftar">
+                            <div>
+                                <p>Belum menjadi anggota ? <Link className="link_question" to="/user/register">Daftar disini</Link></p>
+                            </div>
+                        </div>
+                    </div>
+                    <p className="masuk">Masuk</p>
+                    <div className="input-form">
+                        <Form onSubmit={handleFormSubmit}>
+                            <div>
+                                <Label className="uname-label" for="Username">Username</Label><br />
+                                <input type="text" name="username" id="UsernameField" value={data.username} onChange={handleInputChange} placeholder="Masukan username" />
+                            </div>
+
+                            <div>
+                                <Label className="pass-label" for="Password">Password</Label><br />
+                                <input type="password" name="password" id="PasswordField" value={data.password} onChange={handleInputChange} placeholder="Masukan password" />
+                            </div>
+
+                            <a className="link_lupaPass" href="#">Lupa password?</a>
 
                             {data.errorMessage && (
                                 <div className="alert alert-danger" role="alert">
                                     {data.errorMessage}
                                 </div>
-                            ) }
-                            <Button disabled={data.isSubmiting}>
+                            )}
+
+                            <button className="login-button" disabled={data.isSubmiting} onMouseOver={mouseHover} onMouseLeave={mouseHoverLeave}>
                                 {data.isSubmiting ? (
                                     "..Loading"
-                                ):
-                                (
-                                    "Login"
-                                )
-                            }
-                            </Button>
+                                ) :
+                                    (
+                                        "LOGIN"
+                                    )
+                                }
+                            </button>
                         </Form>
-                        <p>Belum punya akun? <Link to="/user/register">SIGN UP</Link></p>
-                    </Col>
+                    </div>
+                    <a className="link_masukNo" href="#">Masuk dengan nomor anggota</a>
                 </Row>
             </Container>
         </Fragment>

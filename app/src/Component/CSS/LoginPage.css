@@ -1,0 +1,206 @@
+/* Rectangle 2 */
+.rectangle2{
+    position: absolute;
+    width: 491px;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background: #098AFB;
+}
+
+/* Yayasan Pembantu Kematian */
+.ypk_text{
+    position: absolute;
+    width: 331px;
+    height: 32px;
+    left: 80px;
+    top: 301px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21.3px;
+    line-height: 32px;
+    /* identical to box height */
+
+    color: #FFFFFF;
+}
+
+/* Logo */
+.ypk_logo{  
+    position: absolute;
+    width: 385px;
+    height: 65.02px;
+    left: 33px;
+    top: 333px;
+}
+
+/* Jl. MT. Haryono No. 146, Purwokerto, Jawa Tengah */
+.p_address{
+    position: absolute;
+    width: 300px;
+    height: 48px;
+    left: 80px;
+    top: 438px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #FFFFFF;
+}
+
+/* Pelayanan 24 Jam */
+.service    {
+    position: absolute;
+    width: 189px;
+    height: 24px;
+    left: 80px;
+    top: 510px; 
+}
+
+/* Belum menjadi anggota ? Daftar disini */
+.link_daftar{
+    position: absolute;
+    width: 314px;
+    height: 24px;
+    left: 89px;
+    top: 906px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height */
+
+    color: #FFFFFF;
+}
+
+.link_masukNo{
+    position: absolute;
+    width: 252px;
+    height: 24px;
+    left: 1080px;
+    top: 906px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #6C91C2;
+    text-decoration-line: underline;
+}
+
+.link_question{
+    font-weight: 600;
+    text-decoration-line: underline;
+    color: #FFFFFF;
+}
+
+/* Masuk */
+.masuk{
+    position: absolute;
+    width: 131px;
+    height: 57px;
+    left: 1140px;
+    top: 126px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 37.9px;
+    line-height: 57px;
+    /* identical to box height */
+
+    color: #1E96FC;
+}
+
+/* Input */
+input{
+    width: 525px;
+    height: 64px;
+    background: #EDF4FA;
+    border-radius: 10px;
+    border: none;
+    font-weight: 500;
+    text-indent: 2em;
+}
+input::placeholder{
+    color: #B9BBBD;
+}
+
+/* Username */
+.input-form{
+    position: absolute;
+    width: 525px;
+    height: 390px;
+    left: 943px;
+    top: 292px; 
+    color: #6C91C2;
+    font-size: 16px;
+}
+.uname-label{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21.33px;
+    line-height: 32px;
+    /* identical to box height */
+
+    color: #1E96FC;
+}
+
+/* Password */
+.pass-label{
+    margin-top: 30px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21.33px;
+    line-height: 32px;
+    /* identical to box height */
+
+    color: #1E96FC;
+}
+
+/* Lupa Password */
+.link_lupaPass{
+    margin-left: 400px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height */
+
+    color: #1E96FC;
+
+}
+
+/* Login Button */
+.login-button{
+    margin-top: 50px;
+    width: 525px;
+    height: 64px;
+    background: #24CFCB;
+    border-radius: 10px;
+    border: none;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21.33px;
+    line-height: 32px;
+    /* identical to box height */
+
+    color: #FFFFFF;
+}
+
+
+
+
+
