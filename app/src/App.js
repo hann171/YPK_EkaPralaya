@@ -36,7 +36,7 @@ const reducer = (state, action) => {
         isAuthenticated: false,
         user: null
       }
-    
+
     default:
       return state
   }
@@ -51,6 +51,7 @@ const App = () => {
           state, dispatch
         }}>
           <NavbarComp />
+
           {!state.isAuthenticated ?
             //jika logout
             <Redirect to={{
@@ -62,8 +63,8 @@ const App = () => {
             }} />
           }
 
-          <Route exact path="/" component={LoginComp} />
-          <Route exact path="/home" component={HomeComp} />
+          <Route exact path="/" component={HomeComp} />
+          <Route exact path="/login" component={LoginComp} />
           <Route exact path="/user/register" component={UserRegistComp} />
         </AuthContext.Provider>
       </Switch>

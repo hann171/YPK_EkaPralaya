@@ -120,7 +120,7 @@
 }
 
 /* Input */
-input{
+.input-login{
     width: 525px;
     height: 64px;
     background: #EDF4FA;
@@ -129,8 +129,13 @@ input{
     font-weight: 500;
     text-indent: 2em;
 }
-input::placeholder{
+.input-login::placeholder{
     color: #B9BBBD;
+}
+.input-login:focus {
+    outline: none !important;
+    border:1px solid #9ED1FE;
+    box-shadow: 0 0 5px #9ED1FE;
 }
 
 /* Username */

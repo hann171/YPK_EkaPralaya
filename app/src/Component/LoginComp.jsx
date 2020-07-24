@@ -81,7 +81,6 @@ export default function LoginComp() {
     return (
         <Fragment>
             <Container>
-                <br />
                 <Row>
                     <div className="rectangle2">
                         <p className="ypk_text">Yayasan Pembantu Kematian</p>
@@ -99,12 +98,12 @@ export default function LoginComp() {
                         <Form onSubmit={handleFormSubmit}>
                             <div>
                                 <Label className="uname-label" for="Username">Username</Label><br />
-                                <input type="text" name="username" id="UsernameField" value={data.username} onChange={handleInputChange} placeholder="Masukan username" />
+                                <input className="input-login" type="text" name="username" id="UsernameField" value={data.username} onChange={handleInputChange} placeholder="Masukan username" />
                             </div>
 
                             <div>
                                 <Label className="pass-label" for="Password">Password</Label><br />
-                                <input type="password" name="password" id="PasswordField" value={data.password} onChange={handleInputChange} placeholder="Masukan password" />
+                                <input className="input-login" type="password" name="password" id="PasswordField" value={data.password} onChange={handleInputChange} placeholder="Masukan password" />
                             </div>
 
                             <a className="link_lupaPass" href="#">Lupa password?</a>
