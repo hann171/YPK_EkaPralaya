@@ -1,4 +1,4 @@
-import React, { useReducer, createContext } from 'react';
+import React, { useReducer, createContext, useState } from 'react';
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom'
 import './App.css';
 import UserRegistComp from './Component/UserRegistComp';
@@ -15,6 +15,7 @@ const initialstate = {
   user: null,
   token: null
 }
+
 
 //reducer
 const reducer = (state, action) => {

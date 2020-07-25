@@ -9,13 +9,17 @@ var ip = require('ip');
 //Controller Register
 exports.regist = function(req,res){
     var post = {
-        username: req.body.username,
-        password: md5(req.body.password),
+        nama_lengkap: req.body.nama_lengkap,
+        ttl: req.body.ttl,
+        agama: req.body.agama,
+        no_telp: req.body.no_telp,
+        pekerjaan: req.body.pekerjaan,
+        alamat: req.body.alamat,
         status: req.body.status,
     }
 
-    var query = "SELECT username FROM ?? WHERE ??=?";
-    var table = ["user","username", post.username];
+    var query = "SELECT nama_lengkap FROM ?? WHERE ??=?";
+    var table = ["anggota","nama_lengkap", post.nama_lengkap];
 
     query = mysql.format(query,table);
     connection.query(query, function(error,rows){
@@ -25,17 +29,17 @@ exports.regist = function(req,res){
         else{
             if(rows.length == 0){
                 var query = "INSERT INTO ?? SET ?";
-                var table = ["user"];
+                var table = ["anggota"];
                 query = mysql.format(query,table);
                 connection.query(query, post, function(error,rows){
                     if(error){
                         console.log(error);
                     }else{
-                        response.ok("User baru telah ditambahkan", res);
+                        response.ok("Selamat bergabung", res);
                     }
                 });
             }else{
-                response.ok("Username sudah terdaftar!",res);
+                response.ok("Kamu sudah terdaftar menjadi anggota!",res);
             }
         }
     })

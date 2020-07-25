@@ -10,17 +10,18 @@ export default class UserRegist extends PureComponent {
     constructor(props) {
         super(props)
         this.state = {
-            namaLegkap: '',
-            password: '',
+            namaLengkap: '',
+            ttl: '',
+            agama: '',
+            notelp: '',
+            pekerjaan: '',
+            alamat: '',
+            statusKawin: '',
             status: '2',
             response: '',
             color: '',
             display: 'none'
         }
-    }
-
-    status = (props) => {
-        const [rSelected, setRSelected] = useState(null);
     }
 
     handleChange = (event) => {
@@ -29,19 +30,23 @@ export default class UserRegist extends PureComponent {
 
     register = () => {
         axios.post(api + '/auth/register', {
-            username: this.state.namaLegkap,
-            password: this.state.password,
+            nama_lengkap: this.state.namaLengkap,
+            ttl: this.state.ttl,
+            agama: this.state.agama,
+            no_telp: this.state.notelp,
+            pekerjaan: this.state.pekerjaan,
+            alamat: this.state.alamat,
             status: this.state.status
         }).then(json => {
             if (json.data.status === 200) {
-                if (json.data.values === 'User baru telah ditambahkan') {
+                if (json.data.values === 'Selamat bergabung') {
                     this.setState({
                         response: json.data.values,
                         color: 'success',
                         display: 'block',
                     })
                 }
-                else if (json.data.values === 'Username sudah terdaftar!') {
+                else if (json.data.values === 'Kamu sudah terdaftar menjadi anggota!') {
                     this.setState({
                         response: json.data.values,
                         color: 'danger',
@@ -55,8 +60,12 @@ export default class UserRegist extends PureComponent {
                 })
             }
         })
-        this.setState({ username: '' })
-        this.setState({ password: '' })
+        this.setState({ namaLengkap: '' })
+        this.setState({ ttl: '' })
+        this.setState({ agama: '' })
+        this.setState({ notelp: '' })
+        this.setState({ pekerjaan: '' })
+        this.setState({ alamat: '' })
     }
 
     mouseHover(e) {
@@ -87,38 +96,29 @@ export default class UserRegist extends PureComponent {
                     <p className="daftar_text">Daftar Anggota</p>
                     <Form className="input-form-daftar" onSubmit={this.register}>
                         <div className="field">
-                            <Label className="label-daftar" for="namaLengkap">Nama Lengkap</Label>
-                            <input className="input-daftar" type="text" name="namaLengkap" id="namaLengkap" value={this.state.namaLegkap} onChange={this.handleChange} placeholder="Masukan nama lengkap" />
+                            <Label className="label-daftar" for="nama">Nama Lengkap</Label>
+                            <input className="input-daftar" type="text" name="namaLengkap" id="nama" value={this.state.namaLengkap} onChange={this.handleChange} placeholder="Masukan nama lengkap" />
                         </div>
                         <div className="field">
                             <Label className="label-daftar" for="ttl">Tempat, Tanggal Lahir</Label>
-                            <input className="input-daftar" type="password" name="ttl" id="ttl" value={this.state.password} onChange={this.handleChange} placeholder="Tempat, dd/mm/yyyy" />
+                            <input className="input-daftar" type="text" name="ttl" id="ttl" value={this.state.ttl} onChange={this.handleChange} placeholder="Tempat, dd/mm/yyyy" />
                         </div>
                         <div className="field">
                             <Label className="label-daftar" for="agama">Agama</Label>
-                            <input className="input-daftar" type="text" name="agama" id="agama" onChange={this.handleChange} placeholder="Masukan agama" />
+                            <input className="input-daftar" type="text" name="agama" id="agama" value={this.state.agama} onChange={this.handleChange} placeholder="Masukan agama" />
                         </div>
                         <div className="field">
-                            <Label className="label-daftar" for="notelp">No. Telp</Label>
-                            <input className="input-daftar" type="number" name="noTelp" id="notelp" onChange={this.handleChange} placeholder="Masukan no.telp" />
+                            <Label className="label-daftar">No. telp</Label>
+                            <input type="text" className="input-daftar" name="notelp" value={this.state.notelp} onChange={this.handleChange} placeholder="Masukan nomor telp"/>
                         </div>
                         <div className="field">
                             <Label className="label-daftar" for="pekerjaan">Pekerjaan</Label>
-                            <input className="input-daftar" type="text" name="pekerjaan" id="pekerjaan" onChange={this.handleChange} placeholder="Masukan pekerjaan" />
+                            <input className="input-daftar" type="text" name="pekerjaan" id="pekerjaan" value={this.state.pekerjaan} onChange={this.handleChange} placeholder="Masukan pekerjaan" />
                         </div>
                         <div className="field">
                             <Label className="label-daftar" id="alamat" for="alamat">Alamat</Label>
-                            <textarea className="input-daftar textarea" type="textarea" name="alamat" id="alamat" onChange={this.handleChange} />
+                            <textarea className="input-daftar textarea" type="textarea" name="alamat" id="alamat" value={this.state.alamat} onChange={this.handleChange} />
                         </div>
-                        <div className="field">
-                            <Label className="label-daftar" for="status">Status*</Label>
-                            <ButtonGroup>
-                                <Button color="primary" onClick={() => {this.status.setRSelected(1)}} active={this.status.rSelected === 1}>One</Button>
-                                <Button color="primary" onClick={() => {this.status.setRSelected(2)}} active={this.status.rSelected === 2}>Two</Button>
-                                <Button color="primary" onClick={() => {this.status.setRSelected(3)}} active={this.status.rSelected === 3}>Three</Button>
-                            </ButtonGroup>
-                        </div>
-
                         <button type="submit" className="daftar-button" onMouseOver={this.mouseHover} onMouseLeave={this.mouseHoverLeave}>DAFTAR</button>
                     </Form>
                 </Container>
