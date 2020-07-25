@@ -38,7 +38,7 @@
 .input-form-daftar{
     position: absolute;
     left: 898px;
-    width: 615px;
+    width: 620px;
     top: 183px;
     font-size: 16px;
 }
@@ -66,14 +66,25 @@
     height: 100px;
 }
 
+.input-daftar-radio{
+    position: absolute;
+    left: 105px;
+}
+.btn-radio{
+    height: 40px;
+    margin-right: 20px;
+}
+
 .field{
     margin-bottom: 25px;
+}
+.fieldStatusKawin{
+    margin-bottom: 10px;
 }
 #alamat{
     margin-bottom: 50px;
 }
 
-/* Username */
 .label-daftar{
     margin-top: 15px;
     font-family: Poppins;
@@ -103,4 +114,19 @@
     /* identical to box height */
 
     color: #FFFFFF;
+}
+
+.p-status{
+    position: absolute;
+    width: 142px;
+    height: 24px;
+    right: 0;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    /* identical to box height */
+
+    color: #6C91C2;
 }

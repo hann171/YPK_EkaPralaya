@@ -22,6 +22,8 @@ export default class UserRegist extends PureComponent {
             color: '',
             display: 'none'
         }
+
+        this.handleRadioChange = this.handleRadioChange.bind(this);
     }
 
     handleChange = (event) => {
@@ -33,9 +35,10 @@ export default class UserRegist extends PureComponent {
             nama_lengkap: this.state.namaLengkap,
             ttl: this.state.ttl,
             agama: this.state.agama,
-            no_telp: this.state.notelp,
+            noTelp: this.state.notelp,
             pekerjaan: this.state.pekerjaan,
             alamat: this.state.alamat,
+            status_kawin: this.state.statusKawin,
             status: this.state.status
         }).then(json => {
             if (json.data.status === 200) {
@@ -66,6 +69,7 @@ export default class UserRegist extends PureComponent {
         this.setState({ notelp: '' })
         this.setState({ pekerjaan: '' })
         this.setState({ alamat: '' })
+        this.setState({ statusKawin: '' })
     }
 
     mouseHover(e) {
@@ -73,6 +77,13 @@ export default class UserRegist extends PureComponent {
     }
     mouseHoverLeave(e) {
         e.target.style.background = '#24CFCB';
+    }
+
+    handleRadioChange(event) {
+        // set the new value of checked radion button to state using setState function which is async funtion
+        this.setState({
+            statusKawin: event.target.value,
+        });
     }
 
     render() {
@@ -94,7 +105,7 @@ export default class UserRegist extends PureComponent {
                         </div>
                     </div>
                     <p className="daftar_text">Daftar Anggota</p>
-                    <Form className="input-form-daftar" onSubmit={this.register}>
+                    <Form className="input-form-daftar">
                         <div className="field">
                             <Label className="label-daftar" for="nama">Nama Lengkap</Label>
                             <input className="input-daftar" type="text" name="namaLengkap" id="nama" value={this.state.namaLengkap} onChange={this.handleChange} placeholder="Masukan nama lengkap" />
@@ -109,7 +120,7 @@ export default class UserRegist extends PureComponent {
                         </div>
                         <div className="field">
                             <Label className="label-daftar">No. telp</Label>
-                            <input type="text" className="input-daftar" name="notelp" value={this.state.notelp} onChange={this.handleChange} placeholder="Masukan nomor telp"/>
+                            <input type="number" className="input-daftar" name="notelp" value={this.state.notelp} onChange={this.handleChange} placeholder="Masukan nomor telp" />
                         </div>
                         <div className="field">
                             <Label className="label-daftar" for="pekerjaan">Pekerjaan</Label>
@@ -119,7 +130,18 @@ export default class UserRegist extends PureComponent {
                             <Label className="label-daftar" id="alamat" for="alamat">Alamat</Label>
                             <textarea className="input-daftar textarea" type="textarea" name="alamat" id="alamat" value={this.state.alamat} onChange={this.handleChange} />
                         </div>
-                        <button type="submit" className="daftar-button" onMouseOver={this.mouseHover} onMouseLeave={this.mouseHoverLeave}>DAFTAR</button>
+                        <div className="fieldStatusKawin">
+                            <Label className="label-daftar" id="statuskawin" for="statuskawin">Status Kawin*</Label>
+                            <ButtonGroup className="input-daftar-radio">
+                                <Button className="btn-radio" value='Menikah' color="primary" onClick={this.handleRadioChange} active={this.state.statusKawin === 'Menikah'}>Menikah</Button>
+                                <Button className="btn-radio" value='Belum Menikah' color="primary" onClick={this.handleRadioChange} active={this.state.statusKawin === 'Belum Menikah'}>Belum Menikah</Button>
+                                <Button className="btn-radio" value='Pernah Menikah' color="primary" onClick={this.handleRadioChange} active={this.state.statusKawin === 'Pernah Menikah'}>Pernah Menikah</Button>
+                            </ButtonGroup>
+                        </div>
+                        <div className="field">
+                            <p className="p-status">*) Pilih salah satu</p>
+                        </div>
+                        <button onClick={this.register} className="daftar-button" onMouseOver={this.mouseHover} onMouseLeave={this.mouseHoverLeave}>DAFTAR</button>
                     </Form>
                 </Container>
             </Fragment>

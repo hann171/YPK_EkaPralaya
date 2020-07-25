@@ -12,10 +12,11 @@ exports.regist = function(req,res){
         nama_lengkap: req.body.nama_lengkap,
         ttl: req.body.ttl,
         agama: req.body.agama,
-        no_telp: req.body.no_telp,
+        no_telp: req.body.noTelp,
         pekerjaan: req.body.pekerjaan,
         alamat: req.body.alamat,
-        status: req.body.status,
+        status_kawin: req.body.status_kawin,
+        status: req.body.status
     }
 
     var query = "SELECT nama_lengkap FROM ?? WHERE ??=?";
