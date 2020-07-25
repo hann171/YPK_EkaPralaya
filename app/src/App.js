@@ -72,12 +72,12 @@ const Main = withRouter(({location})=>{
   return(
     <div>
       {
-        location.pathname != '/login' && location.pathname != '/user/register' && <NavbarComp/>
+        location.pathname != '/login' && location.pathname != '/register' && <NavbarComp/>
       }
       <Route exact path="/" component={HomeComp} />
       <Route exact path="/home" component={HomeComp} />
       <Route exact path="/login" component={LoginComp} />
-      <Route exact path="/user/register" component={UserRegistComp} />
+      <Route exact path="/register" component={UserRegistComp} />
     </div>
   )
 })

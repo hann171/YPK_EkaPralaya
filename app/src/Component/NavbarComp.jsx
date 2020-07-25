@@ -13,20 +13,20 @@ import {
     DropdownItem,
     NavbarText
 } from 'reactstrap';
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { AuthContext } from '../App';
 import "./CSS/Navbar.css"
 
 const NavbarComp = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [LayananisOpen, setLayananIsOpen] = useState(false);
-    const [BantuanisOpen, setBantuanIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
     const Layanantoggle = () => setLayananIsOpen(!LayananisOpen);
-    const Bantuantoggle = () => setBantuanIsOpen(!BantuanisOpen);
 
     const { state, dispatch } = useContext(AuthContext)
+
+    const history = useHistory();
 
     return (
         <div>
@@ -42,28 +42,26 @@ const NavbarComp = (props) => {
                                 Layanan
                             </DropdownToggle>
                             <DropdownMenu>
-                                <DropdownItem header>Header</DropdownItem>
-                                <DropdownItem disabled>Action</DropdownItem>
-                                <DropdownItem>Another Action</DropdownItem>
+                                <DropdownItem header>Sewa</DropdownItem>
+                                <DropdownItem>Gedung Adi Guna</DropdownItem>
+                                <DropdownItem>Mobil Jenazah</DropdownItem>
                                 <DropdownItem divider />
-                                <DropdownItem>Another Action</DropdownItem>
+                                <DropdownItem header>Jasa</DropdownItem>
+                                <DropdownItem>Perawatan Jenazah</DropdownItem>
+                                <DropdownItem>Perabuan/Kremasi</DropdownItem>
+                                <DropdownItem>Tanah Bong</DropdownItem>
+                                <DropdownItem divider />
+                                <DropdownItem header>Lain-lain</DropdownItem>
+                                <DropdownItem>Ucapan Terima Kasih</DropdownItem>
+                                <DropdownItem>Peti Jenazah</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
                         <NavItem className="navitem">
                             <NavLink to="/about" className='nav-link'>Tentang</NavLink>
                         </NavItem>
-                        <Dropdown nav isOpen={BantuanisOpen} toggle={Bantuantoggle} className="navitem">
-                            <DropdownToggle nav caret>
-                                Bantuan
-                            </DropdownToggle>
-                            <DropdownMenu>
-                                <DropdownItem header>Header</DropdownItem>
-                                <DropdownItem disabled>Action</DropdownItem>
-                                <DropdownItem>Another Action</DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>Another Action</DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
+                        <NavItem className="navitem">
+                            <NavLink to="/help" className='nav-link'>Bantuan</NavLink>
+                        </NavItem>
 
                         <NavItem className="navbar-button-group">
                             <NavLink to="/login" className='navbar-button-login'>Masuk</NavLink>
@@ -75,7 +73,7 @@ const NavbarComp = (props) => {
                                 </Button>
                             )}
                             {!state.isAuthenticated && (
-                                <Button color="primary">Daftar</Button>
+                                <Button color="primary" onClick={()=> history.push("/register")}>Daftar</Button>
                             )}
                         </NavItem>
                     </Nav>
