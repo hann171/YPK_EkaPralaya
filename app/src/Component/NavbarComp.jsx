@@ -67,11 +67,16 @@ const NavbarComp = (props) => {
 
                         <NavItem className="navbar-button-group">
                             <NavLink to="/login" className='navbar-button-login'>Masuk</NavLink>
-                            <Button onClick={() => dispatch({ type: "LOGOUT" })}>
-                                {state.isAuthenticated && (
-                                    "LOGOUT"
-                                )}
-                            </Button>
+                            {state.isAuthenticated && (
+                                <Button color="danger" onClick={() => dispatch({ type: "LOGOUT" })}>
+                                    {state.isAuthenticated && (
+                                        "Logout"
+                                    )}
+                                </Button>
+                            )}
+                            {!state.isAuthenticated && (
+                                <Button color="primary">Daftar</Button>
+                            )}
                         </NavItem>
                     </Nav>
                 </Collapse>

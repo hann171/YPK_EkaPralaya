@@ -13,8 +13,8 @@ export default function LoginComp() {
 
     const { dispatch } = useContext(AuthContext)
     const initialState = {
-        username: "",
-        password: "",
+        namaLengkap: "",
+        noTelp: "",
         isSubmiting: false,
         errorMessage: null
     }
@@ -36,8 +36,8 @@ export default function LoginComp() {
         })
 
         const requestBody = {
-            username: data.username,
-            password: data.password
+            nama_lengkap: data.namaLengkap,
+            noTelp: data.noTelp
         }
 
         const config = {
@@ -66,8 +66,8 @@ export default function LoginComp() {
             })
         setData({
             ...data,
-            username: '',
-            password: ''
+            namaLengkap: '',
+            noTelp: ''
         })
     }
 
@@ -97,13 +97,13 @@ export default function LoginComp() {
                     <div className="input-form">
                         <Form onSubmit={handleFormSubmit}>
                             <div>
-                                <Label className="uname-label" for="Username">Username</Label><br />
-                                <input className="input-login" type="text" name="username" id="UsernameField" value={data.username} onChange={handleInputChange} placeholder="Masukan username" />
+                                <Label className="uname-label" for="username">Nama Lengkap</Label><br />
+                                <input className="input-login" type="text" name="namaLengkap" id="username" value={data.namaLengkap} onChange={handleInputChange} placeholder="Masukan Nama" />
                             </div>
 
                             <div>
-                                <Label className="pass-label" for="Password">Password</Label><br />
-                                <input className="input-login" type="password" name="password" id="PasswordField" value={data.password} onChange={handleInputChange} placeholder="Masukan password" />
+                                <Label className="pass-label" for="Password">No. Telp</Label><br />
+                                <input className="input-login" type="text" name="noTelp" id="Password" value={data.noTelp} onChange={handleInputChange} placeholder="Masukan No. telp" />
                             </div>
 
                             <a className="link_lupaPass" href="#">Lupa password?</a>

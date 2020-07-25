@@ -49,13 +49,12 @@ exports.regist = function(req,res){
 //controller login
 exports.login = function(req,rest){
     var post = {
-        username: req.body.username,
-        password: req.body.password
-        
+        nama_lengkap: req.body.nama_lengkap,
+        no_telp: req.body.noTelp
     }
 
     var query = "SELECT * FROM ?? WHERE ??=? AND ??=?";
-    var table = ["user","username",post.username,"password",md5(post.password)];
+    var table = ["anggota","nama_lengkap",post.nama_lengkap,"no_telp",post.no_telp];
 
     query = mysql.format(query,table);
      
@@ -67,10 +66,10 @@ exports.login = function(req,rest){
                 var token = jwt.sign({rows}, config.secret, {
                     expiresIn: 1440
                 });
-                id_user = rows[0].id_user;
-                username = rows[0].username;
+                id_anggota = rows[0].id_anggota;
+                nama_lengkap = rows[0].nama_lengkap;
                 var data = {
-                    id_user: id_user,
+                    id_user: id_anggota,
                     access_token: token,
                     ip_address: ip.address()
                 }
@@ -89,7 +88,7 @@ exports.login = function(req,rest){
                             message: 'Token JWT Generated!',
                             token:token,
                             currUser: data.id_user,
-                            user: username
+                            user: nama_lengkap
                         });
                     }
                 });

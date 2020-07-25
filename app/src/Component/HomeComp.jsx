@@ -8,6 +8,7 @@ export default function HomeComp() {
     return (
         <div>
             <div>
+                <h1>{state.user}</h1>
                 <p className="ypkText">YAYASAN PEMBANTU KEMATIAN</p>
                 <h1 className="ekpText">EKA PRALAYA</h1>
                 <div className="boxSejarah">

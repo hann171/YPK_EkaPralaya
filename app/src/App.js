@@ -17,7 +17,6 @@ const initialstate = {
   token: null
 }
 
-
 //reducer
 const reducer = (state, action) => {
   switch (action.type) {
@@ -76,6 +75,7 @@ const Main = withRouter(({location})=>{
         location.pathname != '/login' && location.pathname != '/user/register' && <NavbarComp/>
       }
       <Route exact path="/" component={HomeComp} />
+      <Route exact path="/home" component={HomeComp} />
       <Route exact path="/login" component={LoginComp} />
       <Route exact path="/user/register" component={UserRegistComp} />
     </div>
