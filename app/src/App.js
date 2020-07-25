@@ -1,10 +1,11 @@
 import React, { useReducer, createContext, useState } from 'react';
-import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom'
+import { Route, Switch, BrowserRouter, Redirect, withRouter } from 'react-router-dom'
 import './App.css';
 import UserRegistComp from './Component/UserRegistComp';
 import NavbarComp from './Component/NavbarComp';
 import LoginComp from './Component/LoginComp';
 import HomeComp from './Component/HomeComp';
+
 
 //context
 export const AuthContext = createContext()
@@ -51,8 +52,7 @@ const App = () => {
         <AuthContext.Provider value={{
           state, dispatch
         }}>
-          <NavbarComp />
-
+          <Main />
           {!state.isAuthenticated ?
             //jika logout
             <Redirect to={{
@@ -63,14 +63,23 @@ const App = () => {
               pathname: "/home"
             }} />
           }
-
-          <Route exact path="/" component={HomeComp} />
-          <Route exact path="/login" component={LoginComp} />
-          <Route exact path="/user/register" component={UserRegistComp} />
         </AuthContext.Provider>
       </Switch>
     </BrowserRouter>
   )
 }
+
+const Main = withRouter(({location})=>{
+  return(
+    <div>
+      {
+        location.pathname != '/login' && location.pathname != '/user/register' && <NavbarComp/>
+      }
+      <Route exact path="/" component={HomeComp} />
+      <Route exact path="/login" component={LoginComp} />
+      <Route exact path="/user/register" component={UserRegistComp} />
+    </div>
+  )
+})
 
 export default App;

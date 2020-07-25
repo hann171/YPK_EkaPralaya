@@ -1,20 +1,25 @@
 import React, { useContext } from 'react'
 import { Jumbotron, Button } from 'reactstrap';
 import { AuthContext } from '../App';
+import "./CSS/HomePage.css"
 
 export default function HomeComp() {
-    const {state,dispatch} = useContext(AuthContext)
+    const { state, dispatch } = useContext(AuthContext)
     return (
         <div>
-            <Jumbotron>
-                <h1 className="display-3">Hello, {state.user}</h1>
-                <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
-                <hr className="my-2" />
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                <p className="lead">
-                    <Button color="primary">Learn More</Button>
-                </p>
-            </Jumbotron>
+            <div>
+                <p className="ypkText">YAYASAN PEMBANTU KEMATIAN</p>
+                <h1 className="ekpText">EKA PRALAYA</h1>
+                <div className="boxSejarah">
+                    <p> Berdiri sejak ..... dimana kami memberikan pelayanan
+                    untuk membantu anda dan keluarga dalam proses
+                    penanganan kematian dan pemakaman.</p>
+                </div>
+                <button className="btn-info">Info lebih lanjut</button>
+            </div>
+            <div className="gambarBebek">
+                <img src={require('../Assets/dove.png')} alt="" />
+            </div>
         </div>
     )
 }
