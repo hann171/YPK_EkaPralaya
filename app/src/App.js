@@ -5,6 +5,7 @@ import UserRegistComp from './Component/UserRegistComp';
 import NavbarComp from './Component/NavbarComp';
 import LoginComp from './Component/LoginComp';
 import HomeComp from './Component/HomeComp';
+import AdminLoginPage from './Component/AdminLoginPage';
 
 
 //context
@@ -53,7 +54,7 @@ const App = () => {
         }}>
           <Main />
           {!state.isAuthenticated ?
-            //jika logout
+            //jika tidak login
             <Redirect to={{
               pathname: "/"
             }} /> :
@@ -62,6 +63,7 @@ const App = () => {
               pathname: "/home"
             }} />
           }
+          
         </AuthContext.Provider>
       </Switch>
     </BrowserRouter>
@@ -78,6 +80,7 @@ const Main = withRouter(({location})=>{
       <Route exact path="/home" component={HomeComp} />
       <Route exact path="/login" component={LoginComp} />
       <Route exact path="/register" component={UserRegistComp} />
+      <Route exact path="/admin/login" component={AdminLoginPage}/>
     </div>
   )
 })

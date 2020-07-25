@@ -5,6 +5,12 @@ import "./CSS/HomePage.css"
 
 export default function HomeComp() {
     const { state, dispatch } = useContext(AuthContext)
+    function mouseHover(e) {
+        e.target.style.background = '#046ac4';
+    }
+    function mouseHoverLeave(e) {
+        e.target.style.background = '#098AFB';
+    }
     return (
         <div>
             <div>
@@ -16,7 +22,7 @@ export default function HomeComp() {
                     untuk membantu anda dan keluarga dalam proses
                     penanganan kematian dan pemakaman.</p>
                 </div>
-                <button className="btn-info">Info lebih lanjut</button>
+                <button className="btninfo" onMouseOver={mouseHover} onMouseLeave={mouseHoverLeave}>Info lebih lanjut</button>
             </div>
             <div className="gambarBebek">
                 <img src={require('../Assets/dove.png')} alt="" />

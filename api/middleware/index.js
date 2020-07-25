@@ -3,11 +3,11 @@ var auth = require('./auth');
 var router = express.Router();
 //var verifikasi = require('./verifikasi');
 
-//daftarkan menu regis
+//User Page
 router.post('/register', auth.regist);
 router.post('/login', auth.login);
 
-//alamat halaman otorisasi
+//Admin Page
 //router.get('/api/v1/rahasia', verifikasi(), auth.halamanrahasia);
 
 module.exports = router;

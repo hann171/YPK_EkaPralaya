@@ -9,12 +9,12 @@ const qs = require('querystring')
 
 const api = 'http://localhost:3002'
 
-export default function LoginComp() {
+export default function AdminLoginPage() {
 
     const { dispatch } = useContext(AuthContext)
     const initialState = {
-        namaLengkap: "",
-        noTelp: "",
+        username: "",
+        password: "",
         isSubmiting: false,
         errorMessage: null
     }
@@ -36,8 +36,8 @@ export default function LoginComp() {
         })
 
         const requestBody = {
-            nama_lengkap: data.namaLengkap,
-            noTelp: data.noTelp
+            username: data.username,
+            password: data.password
         }
 
         const config = {
@@ -66,8 +66,8 @@ export default function LoginComp() {
             })
         setData({
             ...data,
-            namaLengkap: '',
-            noTelp: ''
+            username: '',
+            password: ''
         })
     }
 
@@ -87,33 +87,24 @@ export default function LoginComp() {
                         <img className="ypk_logo" src={require('../Assets/Logo.png')} alt="" />
                         <p className="p_address"> Jl. MT. Haryono No. 146, Purwokerto, <br />Jawa Tengah</p>
                         <img className="service" src={require('../Assets/24jam.png')} alt="" />
-                        <div className="link_daftar">
-                            <div>
-                                <p>Belum menjadi anggota ? <Link className="link_question" to="/register">Daftar disini</Link></p>
-                            </div>
-                        </div>
                     </div>
                     <p className="masuk">Masuk</p>
                     <div className="input-form">
                         <Form onSubmit={handleFormSubmit}>
                             <div>
-                                <Label className="uname-label" for="username">Nama Lengkap</Label><br />
-                                <input className="input-login" type="text" name="namaLengkap" id="username" value={data.namaLengkap} onChange={handleInputChange} placeholder="Masukan Nama" />
+                                <Label className="uname-label" for="username">Username</Label><br />
+                                <input className="input-login" type="text" name="username" id="username" value={data.username} onChange={handleInputChange} placeholder="Masukan Nama" />
                             </div>
 
                             <div>
                                 <Label className="pass-label" for="Password">No. Telp</Label><br />
-                                <input className="input-login" type="text" name="noTelp" id="Password" value={data.noTelp} onChange={handleInputChange} placeholder="Masukan No. telp" />
+                                <input className="input-login" type="text" name="password" id="Password" value={data.password} onChange={handleInputChange} placeholder="Masukan No. telp" />
                             </div>
-
-                            <a className="link_lupaPass" href="#">Lupa password?</a>
-
                             {data.errorMessage && (
                                 <div className="alert alert-danger" role="alert">
                                     {data.errorMessage}
                                 </div>
                             )}
-
                             <button className="login-button" disabled={data.isSubmiting} onMouseOver={mouseHover} onMouseLeave={mouseHoverLeave}>
                                 {data.isSubmiting ? (
                                     "..Loading"
@@ -125,7 +116,6 @@ export default function LoginComp() {
                             </button>
                         </Form>
                     </div>
-                    <a className="link_masukNo" href="#">Masuk dengan nomor anggota</a>
                 </Row>
             </Container>
         </Fragment>
