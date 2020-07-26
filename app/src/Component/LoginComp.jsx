@@ -93,6 +93,7 @@ export default function LoginComp() {
                             </div>
                         </div>
                     </div>
+                    <Link className="link_masukAdmin" to="/admin/login">Admin</Link>
                     <p className="masuk">Masuk</p>
                     <div className="input-form">
                         <Form onSubmit={handleFormSubmit}>
@@ -106,7 +107,7 @@ export default function LoginComp() {
                                 <input className="input-login" type="text" name="noTelp" id="Password" value={data.noTelp} onChange={handleInputChange} placeholder="Masukan No. telp" />
                             </div>
 
-                            <a className="link_lupaPass" href="#">Lupa password?</a>
+                            <a className="link_lupaPass" href="/login">Lupa password?</a>
 
                             {data.errorMessage && (
                                 <div className="alert alert-danger" role="alert">
@@ -125,7 +126,7 @@ export default function LoginComp() {
                             </button>
                         </Form>
                     </div>
-                    <a className="link_masukNo" href="#">Masuk dengan nomor anggota</a>
+                    <a className="link_masukNo" href="/login">Masuk dengan nomor anggota</a>
                 </Row>
             </Container>
         </Fragment>

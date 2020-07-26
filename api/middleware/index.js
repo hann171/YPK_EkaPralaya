@@ -8,6 +8,6 @@ router.post('/register', auth.regist);
 router.post('/login', auth.login);
 
 //Admin Page
-//router.get('/api/v1/rahasia', verifikasi(), auth.halamanrahasia);
+router.post('/admin/login', auth.admin);
 
 module.exports = router;

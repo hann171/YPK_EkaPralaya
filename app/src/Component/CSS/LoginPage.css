@@ -94,6 +94,21 @@
     color: #6C91C2;
     text-decoration-line: underline;
 }
+.link_masukAdmin{
+    position: absolute;
+    width: 252px;
+    height: 24px;
+    left: 1800px;
+    top: 50px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #6C91C2;
+    text-decoration-line: underline;
+}
 
 .link_question{
     font-weight: 600;

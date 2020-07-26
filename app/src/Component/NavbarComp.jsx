@@ -67,10 +67,8 @@ const NavbarComp = (props) => {
                             <NavLink to="/login" className='navbar-button-login'>Masuk</NavLink>
                             {state.isAuthenticated && (
                                 <Button color="danger" onClick={() => dispatch({ type: "LOGOUT" })}>
-                                    {state.isAuthenticated && (
-                                        "Logout"
-                                    )}
-                                </Button>
+                                LOGOUT
+                            </Button>
                             )}
                             {!state.isAuthenticated && (
                                 <Button color="primary" onClick={()=> history.push("/register")}>Daftar</Button>

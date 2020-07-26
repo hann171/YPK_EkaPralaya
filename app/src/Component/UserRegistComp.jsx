@@ -90,9 +90,7 @@ export default class UserRegist extends PureComponent {
         return (
             <Fragment>
                 <Container>
-                    <Alert color={this.state.color} style={{ display: this.state.display }}>
-                        {this.state.response}
-                    </Alert>
+                    
                     <div className="rectangle2">
                         <p className="ypk_text">Yayasan Pembantu Kematian</p>
                         <img className="ypk_logo" src={require('../Assets/Logo.png')} alt="" />
@@ -104,6 +102,9 @@ export default class UserRegist extends PureComponent {
                             </div>
                         </div>
                     </div>
+                    <Alert color={this.state.color} style={{ display: this.state.display }}>
+                        {this.state.response}
+                    </Alert>
                     <p className="daftar_text">Daftar Anggota</p>
                     <Form className="input-form-daftar">
                         <div className="field">

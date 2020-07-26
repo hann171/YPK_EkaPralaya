@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useState } from 'react'
 import axios from 'axios'
 import { CardImg, Container, Col, Row, Form, FormGroup, Label, Input } from 'reactstrap'
-import { AuthContext } from '../App'
+import { AdminAuthContext } from '../App'
 import { Link } from 'react-router-dom'
 import "./CSS/LoginPage.css"
 
@@ -9,12 +9,12 @@ const qs = require('querystring')
 
 const api = 'http://localhost:3002'
 
-export default function AdminLoginPage() {
+export default function LoginComp() {
 
-    const { dispatch } = useContext(AuthContext)
+    const { dispatch } = useContext(AdminAuthContext)
     const initialState = {
-        username: "",
-        password: "",
+        namaLengkap: "",
+        noTelp: "",
         isSubmiting: false,
         errorMessage: null
     }
@@ -36,8 +36,8 @@ export default function AdminLoginPage() {
         })
 
         const requestBody = {
-            username: data.username,
-            password: data.password
+            nama_lengkap: data.namaLengkap,
+            noTelp: data.noTelp
         }
 
         const config = {
@@ -46,11 +46,11 @@ export default function AdminLoginPage() {
             }
         }
 
-        axios.post(api + '/auth/login', qs.stringify(requestBody), config)
+        axios.post(api + '/auth/admin/login', qs.stringify(requestBody), config)
             .then(res => {
                 if (res.data.success === true) {
                     dispatch({
-                        type: "LOGIN",
+                        type: "ADMIN_LOGIN",
                         payload: res.data
                     })
                 }
@@ -66,8 +66,8 @@ export default function AdminLoginPage() {
             })
         setData({
             ...data,
-            username: '',
-            password: ''
+            namaLengkap: '',
+            noTelp: ''
         })
     }
 
@@ -88,23 +88,25 @@ export default function AdminLoginPage() {
                         <p className="p_address"> Jl. MT. Haryono No. 146, Purwokerto, <br />Jawa Tengah</p>
                         <img className="service" src={require('../Assets/24jam.png')} alt="" />
                     </div>
-                    <p className="masuk">Masuk</p>
+                    <p className="masuk">ADMIN</p>
                     <div className="input-form">
                         <Form onSubmit={handleFormSubmit}>
                             <div>
-                                <Label className="uname-label" for="username">Username</Label><br />
-                                <input className="input-login" type="text" name="username" id="username" value={data.username} onChange={handleInputChange} placeholder="Masukan Nama" />
+                                <Label className="uname-label" for="username">Nama Lengkap</Label><br />
+                                <input className="input-login" type="text" name="namaLengkap" id="username" value={data.namaLengkap} onChange={handleInputChange} placeholder="Masukan Nama" />
                             </div>
 
                             <div>
                                 <Label className="pass-label" for="Password">No. Telp</Label><br />
-                                <input className="input-login" type="text" name="password" id="Password" value={data.password} onChange={handleInputChange} placeholder="Masukan No. telp" />
+                                <input className="input-login" type="text" name="noTelp" id="Password" value={data.noTelp} onChange={handleInputChange} placeholder="Masukan No. telp" />
                             </div>
+
                             {data.errorMessage && (
                                 <div className="alert alert-danger" role="alert">
                                     {data.errorMessage}
                                 </div>
                             )}
+
                             <button className="login-button" disabled={data.isSubmiting} onMouseOver={mouseHover} onMouseLeave={mouseHoverLeave}>
                                 {data.isSubmiting ? (
                                     "..Loading"
