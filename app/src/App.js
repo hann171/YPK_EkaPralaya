@@ -3,10 +3,13 @@ import { Route, Switch, BrowserRouter, Redirect, withRouter } from 'react-router
 import './App.css';
 import UserRegistComp from './Component/UserRegistComp';
 import NavbarComp from './Component/NavbarComp';
+import NavbarAdmin from './Component/NavbarAdmin'
 import LoginComp from './Component/LoginComp';
 import HomeComp from './Component/HomeComp';
 import AdminLoginPage from './Component/AdminLoginPage';
-
+import HomeAdmin from './Component/HomeAdmin';
+import AboutPage from './Component/AboutPage';
+import Anggota from './Component/Anggota';
 
 //context
 export const AuthContext = createContext()
@@ -61,53 +64,57 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialstate)
   return (
     <BrowserRouter>
-      <Switch>
-        <AuthContext.Provider value={{
-          state, dispatch
-        }}>
-          <AdminAuthContext.Provider value={{
-            state, dispatch
-          }}>
+      <AuthContext.Provider value={{ state, dispatch }}>
+        {!state.isAuthenticated ?
+          //jika tidak login
+          <Redirect to={{
+            pathname: "/"
+          }} /> :
+          //jika login
+          <Redirect to={{
+            pathname: "/home"
+          }} />
+        }
+        <AdminAuthContext.Provider value={{ state, dispatch }}>
+          {!state.isAdminAuthenticated ?
+            //jika tidak login
+            <Redirect to={{
+              pathname: "/"
+            }} /> :
+            //jika login
+            <Redirect to={{
+              pathname: "/admin/home"
+            }} />
+          }
+          <Switch>
             <Main />
-            {!state.isAuthenticated ?
-              //jika tidak login
-              <Redirect to={{
-                pathname: "/"
-              }} /> :
-              //jika login
-              <Redirect to={{
-                pathname: "/home"
-              }} />
-            }
-            {!state.isAdminAuthenticated ?
-              //jika tidak login
-              <Redirect to={{
-                pathname: "/"
-              }} /> :
-              //jika login
-              <Redirect to={{
-                pathname: "/register"
-              }} />
-            }
-          </AdminAuthContext.Provider>
-
-        </AuthContext.Provider>
-      </Switch>
+          </Switch>
+        </AdminAuthContext.Provider>
+      </AuthContext.Provider>
     </BrowserRouter>
   )
 }
 
 const Main = withRouter(({ location }) => {
+
   return (
     <div>
+
       {
-        location.pathname !== '/login' && location.pathname !== '/register' && location.pathname !== '/admin/login' && <NavbarComp />
+        location.pathname !== '/login' && location.pathname !== '/register' && location.pathname !== '/admin/login' && location.pathname !== '/admin/home' && <NavbarComp />
       }
+      {
+        location.pathname === '/admin/home' && <NavbarAdmin />
+      }
+
       <Route exact path="/" component={HomeComp} />
       <Route exact path="/home" component={HomeComp} />
+      <Route exact path="/admin/home" component={HomeAdmin} />
       <Route exact path="/login" component={LoginComp} />
-      <Route exact path="/register" component={UserRegistComp} />
       <Route exact path="/admin/login" component={AdminLoginPage} />
+      <Route exact path="/register" component={UserRegistComp} />
+      <Route exact path="/about" component={AboutPage} />
+      <Route exact path="/anggota" component={Anggota} />
     </div>
   )
 })

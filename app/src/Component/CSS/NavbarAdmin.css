@@ -1,0 +1,18 @@
+.greeting{
+    position: absolute;
+    width: 307px;
+    height: 42px;
+    left: 1050px;
+    top: 6px;
+}
+.greet{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21.33px;
+    line-height: 32px;
+    /* identical to box height */
+
+    color: #1E96FC;
+    margin-right: 76px;
+}
