@@ -1,0 +1,47 @@
+.sidebar{
+    position: absolute;
+    width: 211px;
+    height: 1056px;
+    left: 0px;
+    top: 0px;
+
+    background: #098AFB;
+}
+
+.headerTabel{
+    position: absolute;
+    width: 200px;
+    height: 32px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21.33px;
+    line-height: 32px;
+    /* identical to box height */
+
+    color: #1E96FC;
+}
+
+.tabel{
+    position: absolute;
+    width: 1390px;
+    height: 332px;
+    left: 361px;
+    top: 198px;
+}
+.tabel-head{
+    position: absolute;
+    width: 1359px;
+    height: 244px;
+    left: 31px;
+    top: 48px;
+}
+
+.tabel2{
+    position: absolute;
+    width: 1390px;
+    height: 332px;
+    left: 361px;
+    top: 630px;
+}
