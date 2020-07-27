@@ -5,12 +5,11 @@ import { Table, Button, Container, navlink, Alert } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 const api = 'http://localhost:3002'
-
 export default class Anggota extends PureComponent {
     constructor(props) {
         super(props)
         this.state = {
-            anggota: [],
+            mahasiswa: [],
             response: '',
             display: 'none'
         }
@@ -19,13 +18,13 @@ export default class Anggota extends PureComponent {
     componentDidMount() {
         axios.get(api + '/anggota').then(res => {
             this.setState({
-                anggota: res.data.values
+                mahasiswa: res.data.values
             })
         })
     }
 
-    delAnggota = (idAnggota) => {
-        const { anggota } = this.state
+    DeleteAnggota = (idAnggota) => {
+        const { mahasiswa } = this.state
         const data = qs.stringify({
             id_anggota: idAnggota
         })
@@ -33,20 +32,21 @@ export default class Anggota extends PureComponent {
         axios.delete(api + '/anggota/hapus',
             {
                 data: data,
-                headers: { 'Content-type': 'application/x-ww-form-urlencoded' }
+                headers: { 'Content-type': 'application/x-www-form-urlencoded' }
             }
         ).then(json => {
             if (json.data.status === 200) {
                 this.setState({
+
                     response: json.data.values,
-                    anggota: anggota.filter(anggota => anggota.id_anggota !== idAnggota),
+                    mahasiswa: mahasiswa.filter(mahasiswa => mahasiswa.id_anggota !== idAnggota),
                     display: 'block'
                 })
-            }
-            else {
+            } else {
                 this.setState({
-                    response: json.data.values,
-                    display: 'block'
+                    
+                        response: json.data.values,
+                        display: 'block'
                 })
             }
         })
@@ -55,51 +55,45 @@ export default class Anggota extends PureComponent {
     render() {
         return (
             <Container>
-                <h2>Data Anggota</h2>
+                <h2>Data Mahasiswa</h2>
                 <Alert color="success" style={{ display: this.state.display }}>
                     {this.state.response}
                 </Alert>
+                <navlink><Button color="success" href="/mahasiswa/tambah">Tambah Data</Button></navlink>
+                <hr />
                 <Table className="table-bordered">
                     <thead>
                         <tr>
-                            <th>No. Anggota</th>
-                            <th>Nama Lengkap</th>
-                            <th>TTL</th>
-                            <th>Alamat</th>
-                            <th>Status</th>
+                            <th>NIM</th>
+                            <th>Nama</th>
+                            <th>Jurusan</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.anggota.map(anggota =>
-                            <tr key={anggota.id_anggota}>
-                                <td>{anggota.id_anggota}</td>
-                                <td>{anggota.nama_lengkap}</td>
-                                <td>{anggota.ttl}</td>
-                                <td>{anggota.alamat}</td>
-                                <td>{anggota.status_keanggotaan}</td>
+                        {this.state.mahasiswa.map(mahasiswa =>
+                            <tr key={mahasiswa.id_anggota}>
+                                <td>{mahasiswa.nim}</td>
+                                <td>{mahasiswa.nama_lengkap}</td>
+                                <td>{mahasiswa.jurusan}</td>
                                 <td>
                                     <Link to=
                                         {
                                             {
-                                                pathname: `/admin/anggota/edit`,
-                                                state:{
-                                                    id_anggota: anggota.id_anggota,
-                                                    nama_lengkap: anggota.nama_lengkap,
-                                                    ttl: anggota.ttl,
-                                                    agama: anggota.agama,
-                                                    no_telp: anggota.no_telp,
-                                                    pekerjaan: anggota.pekerjaan,
-                                                    alamat: anggota.alamat,
-                                                    status_kawin: anggota.status_kawin,
-                                                    status_keanggotaan: anggota.status_keanggotaan
+                                                pathname: `/mahasiswa/edit`,
+                                                state: {
+                                                    id_mahasiswa: mahasiswa.id_mahasiswa,
+                                                    nim: mahasiswa.nim,
+                                                    nama: mahasiswa.nama,
+                                                    jurusan: mahasiswa.jurusan
                                                 }
                                             }
                                         }>
                                         <Button>Edit</Button>
-                                        <span> </span>
+                                        
                                     </Link>
-                                    <Button onClick={() => this.delAnggota(anggota.id_anggota)} color="danger">Hapus</Button>
+                                    <span> </span>
+                                    <Button onClick={()=>this.DeleteAnggota(mahasiswa.id_anggota)} color="danger">Hapus</Button>
                                 </td>
                             </tr>
                         )}

@@ -29,9 +29,9 @@ exports.tampilAnggotaBaru = function (req, res) {
 };
 
 exports.hapusAnggota = function (req, res) {
-    var id = req.body.id_anggota;
+    var id_anggota = req.body.id_anggota;
 
-    connection.query('DELETE from anggota WHERE id_anggota=?', [id],
+    connection.query('DELETE from anggota WHERE id_anggota = ?', [id_anggota],
         function(error,rows,fields){
             if(error){
                 console.log(error);
