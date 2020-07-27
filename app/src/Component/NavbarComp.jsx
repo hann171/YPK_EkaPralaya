@@ -64,14 +64,16 @@ const NavbarComp = (props) => {
                         </NavItem>
 
                         <NavItem className="navbar-button-group">
-                            <NavLink to="/login" className='navbar-button-login'>Masuk</NavLink>
                             {state.isAuthenticated && (
                                 <Button color="danger" onClick={() => dispatch({ type: "LOGOUT" })}>
-                                LOGOUT
-                            </Button>
+                                    LOGOUT
+                                </Button>
                             )}
                             {!state.isAuthenticated && (
-                                <Button color="primary" onClick={()=> history.push("/register")}>Daftar</Button>
+                                <div>
+                                    <NavLink to="/login" className='navbar-button-login'>Masuk</NavLink>
+                                    <Button color="primary" onClick={() => history.push("/register")}>Daftar</Button>
+                                </div>
                             )}
                         </NavItem>
                     </Nav>

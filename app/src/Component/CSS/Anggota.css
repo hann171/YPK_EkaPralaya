@@ -8,16 +8,16 @@
     background: #098AFB;
 }
 
-.headertabel{
+.headerTabel{
     position: absolute;
-    width: 179px;
-    height: 32px;
+    width: 227px;
+    height: 43px;
 
     font-family: Poppins;
     font-style: normal;
     font-weight: bold;
-    font-size: 21.33px;
-    line-height: 32px;
+    font-size: 28.43px;
+    line-height: 43px;
     /* identical to box height */
 
     color: #1E96FC;
@@ -35,14 +35,5 @@
     width: 1359px;
     height: 244px;
     left: 31px;
-    top: 48px;
-}
-
-.tabel2{
-    position: absolute;
-    width: 1390px;
-    height: 332px;
-    left: 361px;
-    top: 630px;
-    margin-bottom: 100px;
+    top: 73px;
 }

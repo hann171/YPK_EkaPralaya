@@ -2,9 +2,45 @@
     position: absolute;
     width: 307px;
     height: 42px;
-    left: 1050px;
+    left: 1025px;
     top: 6px;
 }
+
+.wrapper{
+    display: flex-row;
+    position: relative;
+    width: 1515px;
+}
+.wrapper .sidebar{
+    position: fixed;
+    width: 211px;
+    height: 1056px;
+    left: 0px;
+    top: 0px;
+
+    background: #098AFB;
+}
+
+.nav-layout{
+    position: absolute;
+    left: 133px;
+}
+.navitemAdmin{
+    margin-right: 30px;
+}
+
+.navbar-option-admin{
+    position: absolute;
+    width: 100%;
+    left: 331px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1E96FC;
+}
+
 .greet{
     font-family: Poppins;
     font-style: normal;

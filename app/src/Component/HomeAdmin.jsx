@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState, Fragment } from 'react'
-import { Jumbotron, Button, Table, Navbar } from 'reactstrap';
+import { Jumbotron, Button, Table, Navbar, NavItem } from 'reactstrap';
 import { AdminAuthContext } from '../App';
 import "./CSS/HomeAdmin.css"
+import {NavLink} from 'react-router-dom'
 import axios from 'axios'
 
 const api = 'http://localhost:3002'
@@ -12,7 +13,7 @@ export default function HomeAdmin() {
 
     useEffect(() => {
         console.log("Memanggil Use Effect")
-        axios.get(api + '/anggota').then(res => {
+        axios.get(api + '/anggota/new').then(res => {
             setAnggota(res.data.values)
         })
     }, [])
@@ -25,11 +26,8 @@ export default function HomeAdmin() {
     }
     return (
         <div>
-            <Navbar className="sidebar" aria-orientation="vertical">
-            </Navbar>
-
             <div className="tabel">
-                <p className="headerTabel">Daftar Anggota</p>
+                <p className="headertabel">Daftar Anggota</p>
                 <Table className="tabel-head">
                     <thead>
                         <tr>
@@ -58,7 +56,7 @@ export default function HomeAdmin() {
                 </Table>
             </div>
             <div className="tabel2">
-                <p className="headerTabel">Berita Duka Cita</p>
+                <p className="headertabel">Berita Duka Cita</p>
                 <Table className="tabel-head">
                     <thead>
                         <tr>

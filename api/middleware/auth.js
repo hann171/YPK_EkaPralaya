@@ -69,7 +69,7 @@ exports.login = function (req, rest) {
                 id_anggota = rows[0].id_anggota;
                 nama_lengkap = rows[0].nama_lengkap;
                 var data = {
-                    id_user: id_anggota,
+                    id_anggota: id_anggota,
                     access_token: token,
                     ip_address: ip.address()
                 }
@@ -129,7 +129,7 @@ exports.admin = function (req, rest) {
                             return rest.status(401).send({ auth: false, message: 'token tidak terdaftar!' });
                         } else {
                             var data = {
-                                id_user: id,
+                                id_anggota: id,
                                 access_token: token,
                                 ip_address: ip.address()
                             }
