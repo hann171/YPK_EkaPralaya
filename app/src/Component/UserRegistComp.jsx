@@ -105,7 +105,7 @@ export default class UserRegist extends PureComponent {
                     <Alert color={this.state.color} style={{ display: this.state.display }}>
                         {this.state.response}
                     </Alert>
-                    <p className="daftar_text">Daftar Anggota</p>
+                    <p className="daftar_text_regis">Daftar Anggota</p>
                     <Form className="input-form-daftar">
                         <div className="field">
                             <Label className="label-daftar" for="nama">Nama Lengkap</Label>
