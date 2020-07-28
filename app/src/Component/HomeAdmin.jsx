@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, Fragment } from 'react'
 import { Jumbotron, Button, Table, Navbar, NavItem } from 'reactstrap';
 import { AdminAuthContext } from '../App';
 import "./CSS/HomeAdmin.css"
-import {NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 const api = 'http://localhost:3002'
@@ -48,7 +48,25 @@ export default function HomeAdmin() {
                                 <td>{anggota.alamat}</td>
                                 <td>{anggota.status_keanggotaan}</td>
                                 <td>
-                                    <button>edit</button>
+                                <Link to=
+                                            {
+                                                {
+                                                    pathname: `/admin/anggota/edit`,
+                                                    state: {
+                                                        id_anggota: anggota.id_anggota,
+                                                        nama_lengkap: anggota.nama_lengkap,
+                                                        ttl: anggota.ttl,
+                                                        agama: anggota.agama,
+                                                        no_telp: anggota.no_telp,
+                                                        pekerjaan: anggota.pekerjaan,
+                                                        alamat: anggota.alamat,
+                                                        status_kawin: anggota.status_kawin,
+                                                        status_keanggotaan: anggota.status_keanggotaan
+                                                    }
+                                                }
+                                            }>
+                                            <button className="btn-edit-anggota">Edit</button>
+                                        </Link>
                                 </td>
                             </tr>
                         )}
@@ -77,7 +95,25 @@ export default function HomeAdmin() {
                                 <td>{anggota.alamat}</td>
                                 <td>{anggota.status_keanggotaan}</td>
                                 <td>
-                                    <button>edit</button>
+                                <Link to=
+                                            {
+                                                {
+                                                    pathname: `/admin/anggota/edit`,
+                                                    state: {
+                                                        id_anggota: anggota.id_anggota,
+                                                        nama_lengkap: anggota.nama_lengkap,
+                                                        ttl: anggota.ttl,
+                                                        agama: anggota.agama,
+                                                        no_telp: anggota.no_telp,
+                                                        pekerjaan: anggota.pekerjaan,
+                                                        alamat: anggota.alamat,
+                                                        status_kawin: anggota.status_kawin,
+                                                        status_keanggotaan: anggota.status_keanggotaan
+                                                    }
+                                                }
+                                            }>
+                                            <button className="btn-edit-anggota">Edit</button>
+                                        </Link>
                                 </td>
                             </tr>
                         )}

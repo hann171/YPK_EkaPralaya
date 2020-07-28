@@ -31,9 +31,9 @@ const NavbarComp = (props) => {
     return (
         <div>
             <Navbar className="Navbar" light expand="md">
-                <NavbarBrand href="/">
+            <NavLink to="/home">
                     <img src={require('../Assets/Logo-dark.png')} alt="" />
-                </NavbarBrand>
+                </NavLink>
                 <NavbarToggler onClick={toggle} />
                 <Collapse navbar>
                     <Nav className="mr-auto navbar-option">

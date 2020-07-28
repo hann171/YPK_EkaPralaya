@@ -11,6 +11,7 @@ import HomeAdmin from './Component/HomeAdmin';
 import AboutPage from './Component/AboutPage';
 import Anggota from './Component/Anggota';
 import EditAnggota from './Component/EditAnggota';
+import TambahAnggota from './Component/TambahAnggota';
 
 //context
 export const AuthContext = createContext()
@@ -102,7 +103,7 @@ const Main = withRouter(({ location }) => {
     <div>
 
       {
-        location.pathname !== '/login' && location.pathname !== '/register' && location.pathname !== '/admin/login' && location.pathname !== '/admin/home' && location.pathname !== '/admin/anggota' && location.pathname !== '/admin/anggota/edit' && <NavbarComp />
+        location.pathname !== '/login' && location.pathname !== '/register' && location.pathname !== '/admin/login' && location.pathname !== '/admin/home' && location.pathname !== '/admin/anggota' && location.pathname !== '/admin/anggota/edit' && location.pathname !== '/admin/anggota/tambah' && <NavbarComp />
       }
       {
         location.pathname === '/admin/home' && <NavbarAdmin />
@@ -112,6 +113,9 @@ const Main = withRouter(({ location }) => {
       }
       {
         location.pathname === '/admin/anggota/edit' && <NavbarAdmin />
+      }
+      {
+        location.pathname === '/admin/anggota/tambah' && <NavbarAdmin />
       }
 
       <Route exact path="/" component={HomeComp} />
@@ -123,6 +127,7 @@ const Main = withRouter(({ location }) => {
       <Route exact path="/about" component={AboutPage} />
       <Route exact path="/admin/anggota" component={Anggota} />
       <Route exact path="/admin/anggota/edit" component={EditAnggota} />
+      <Route exact path="/admin/anggota/tambah" component={TambahAnggota} />
     </div>
   )
 })

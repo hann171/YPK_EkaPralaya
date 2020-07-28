@@ -28,7 +28,7 @@
     width: 1390px;
     height: 332px;
     left: 361px;
-    top: 198px;
+    top: 160px;
 }
 .tabel-head{
     position: absolute;
@@ -36,6 +36,15 @@
     height: 244px;
     left: 31px;
     top: 48px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21.33px;
+    line-height: 100%;
+    /* or 21px */
+
+    color: #6C91C2 !important;
 }
 
 .tabel2{
@@ -44,5 +53,21 @@
     height: 332px;
     left: 361px;
     top: 630px;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
+}
+
+.btn-edit{
+    width: 91px;
+    height: 48px;
+    border: none;
+    background: #9ED1FE;
+    border-radius: 10px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21.33px;
+    line-height: 32px;
+    /* identical to box height */
+
+    color: #EDF4FA;
 }

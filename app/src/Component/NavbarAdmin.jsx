@@ -30,9 +30,9 @@ const NavbarComp = (props) => {
             <Navbar className="sidebar" aria-orientation="vertical">
             </Navbar>
             <Navbar className="Navbar nav-layout" aria-orientation="horizontal" light expand="md">
-                <NavbarBrand href="/admin/home">
+                <NavLink to="/admin/home">
                     <img src={require('../Assets/Logo-dark.png')} alt="" />
-                </NavbarBrand>
+                </NavLink>
                 <NavbarToggler onClick={toggle} />
                 <Collapse navbar>
                     <Nav className="mr-auto navbar-option-admin">

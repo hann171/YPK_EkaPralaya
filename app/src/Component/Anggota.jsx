@@ -4,12 +4,14 @@ import qs from 'querystring'
 import { Table, Button, Container, navlink, Alert } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
+import './CSS/Anggota.css'
+
 const api = 'http://localhost:3002'
 export default class Anggota extends PureComponent {
     constructor(props) {
         super(props)
         this.state = {
-            mahasiswa: [],
+            anggota: [],
             response: '',
             display: 'none'
         }
@@ -18,13 +20,13 @@ export default class Anggota extends PureComponent {
     componentDidMount() {
         axios.get(api + '/anggota').then(res => {
             this.setState({
-                mahasiswa: res.data.values
+                anggota: res.data.values
             })
         })
     }
 
     DeleteAnggota = (idAnggota) => {
-        const { mahasiswa } = this.state
+        const { anggota } = this.state
         const data = qs.stringify({
             id_anggota: idAnggota
         })
@@ -37,16 +39,15 @@ export default class Anggota extends PureComponent {
         ).then(json => {
             if (json.data.status === 200) {
                 this.setState({
-
                     response: json.data.values,
-                    mahasiswa: mahasiswa.filter(mahasiswa => mahasiswa.id_anggota !== idAnggota),
+                    anggota: anggota.filter(anggota => anggota.id_anggota !== idAnggota),
                     display: 'block'
                 })
             } else {
                 this.setState({
-                    
-                        response: json.data.values,
-                        display: 'block'
+
+                    response: json.data.values,
+                    display: 'block'
                 })
             }
         })
@@ -54,52 +55,71 @@ export default class Anggota extends PureComponent {
 
     render() {
         return (
-            <Container>
-                <h2>Data Mahasiswa</h2>
+            <div>
                 <Alert color="success" style={{ display: this.state.display }}>
                     {this.state.response}
                 </Alert>
-                <navlink><Button color="success" href="/mahasiswa/tambah">Tambah Data</Button></navlink>
+                <p className="headertabel-anggota">Daftar Anggota</p>
+                <Link to="/admin/anggota/tambah" >   
+                     <button className="btn-tambah-anggota">Tambah</button>
+                </Link>
                 <hr />
-                <Table className="table-bordered">
-                    <thead>
-                        <tr>
-                            <th>NIM</th>
-                            <th>Nama</th>
-                            <th>Jurusan</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.mahasiswa.map(mahasiswa =>
-                            <tr key={mahasiswa.id_anggota}>
-                                <td>{mahasiswa.nim}</td>
-                                <td>{mahasiswa.nama_lengkap}</td>
-                                <td>{mahasiswa.jurusan}</td>
-                                <td>
-                                    <Link to=
-                                        {
-                                            {
-                                                pathname: `/mahasiswa/edit`,
-                                                state: {
-                                                    id_mahasiswa: mahasiswa.id_mahasiswa,
-                                                    nim: mahasiswa.nim,
-                                                    nama: mahasiswa.nama,
-                                                    jurusan: mahasiswa.jurusan
-                                                }
-                                            }
-                                        }>
-                                        <Button>Edit</Button>
-                                        
-                                    </Link>
-                                    <span> </span>
-                                    <Button onClick={()=>this.DeleteAnggota(mahasiswa.id_anggota)} color="danger">Hapus</Button>
-                                </td>
+                <div className="tabel-anggota">
+                    <Table className="tabel-head-anggota">
+                        <thead>
+                            <tr>
+                                <th>No. Anggota</th>
+                                <th>Nama Lengkap</th>
+                                <th>Tempat, tanggal lahir</th>
+                                <th>Agama</th>
+                                <th>No. Telp</th>
+                                <th>Pekerjaan</th>
+                                <th>Alamat</th>
+                                <th>Status Kawin</th>
+                                <th>Status Keanggotaan</th>
+                                <th>Action</th>
                             </tr>
-                        )}
-                    </tbody>
-                </Table>
-            </Container>
+                        </thead>
+                        <tbody>
+                            {this.state.anggota.map(anggota =>
+                                <tr key={anggota.id_anggota}>
+                                    <td>{anggota.id_anggota}</td>
+                                    <td>{anggota.nama_lengkap}</td>
+                                    <td>{anggota.ttl}</td>
+                                    <td>{anggota.agama}</td>
+                                    <td>{anggota.no_telp}</td>
+                                    <td>{anggota.pekerjaan}</td>
+                                    <td>{anggota.alamat}</td>
+                                    <td>{anggota.status_kawin}</td>
+                                    <td>{anggota.status_keanggotaan}</td>
+                                    <td>
+                                        <Link to=
+                                            {
+                                                {
+                                                    pathname: `/admin/anggota/edit`,
+                                                    state: {
+                                                        id_anggota: anggota.id_anggota,
+                                                        nama_lengkap: anggota.nama_lengkap,
+                                                        ttl: anggota.ttl,
+                                                        agama: anggota.agama,
+                                                        no_telp: anggota.no_telp,
+                                                        pekerjaan: anggota.pekerjaan,
+                                                        alamat: anggota.alamat,
+                                                        status_kawin: anggota.status_kawin,
+                                                        status_keanggotaan: anggota.status_keanggotaan
+                                                    }
+                                                }
+                                            }>
+                                            <button className="btn-edit-anggota">Edit</button>
+                                        </Link>
+                                        <button className="btn-del-anggota" onClick={() => this.DeleteAnggota(anggota.id_anggota)} color="danger">Hapus</button>
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </Table>
+                </div>
+            </div>
         )
     }
 }

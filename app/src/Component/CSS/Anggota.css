@@ -8,10 +8,12 @@
     background: #098AFB;
 }
 
-.headerTabel{
+.headertabel-anggota{
     position: absolute;
     width: 227px;
     height: 43px;
+    left: 361px;
+    top: 110px;
 
     font-family: Poppins;
     font-style: normal;
@@ -23,17 +25,84 @@
     color: #1E96FC;
 }
 
-.tabel{
+.tabel-anggota{
     position: absolute;
     width: 1390px;
     height: 332px;
     left: 361px;
     top: 198px;
 }
-.tabel-head{
+
+.btn-del-anggota{
     position: absolute;
-    width: 1359px;
-    height: 244px;
-    left: 31px;
-    top: 73px;
+    width: 87px;
+    height: 48px;
+    margin-left: 7px;
+    background: #FF6B6B !important;
+    border-radius: 10px !important;
+    border: none;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 32px;
+    /* identical to box height */
+
+    color: #EDF4FA;
 }
+.btn-edit-anggota{
+    width: 87px;
+    height: 48px;
+    background: #9ED1FE !important;
+    border-radius: 10px !important;
+    border: none;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 32px;
+    /* identical to box height */
+
+    color: #EDF4FA;
+}
+
+.tabel-head-anggota{
+    position: absolute;
+    width: 1390px;
+    height: 654px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21.33px;
+    line-height: 100%;
+    /* or 21px */
+
+    color: #6C91C2 !important;
+}
+
+.btn-tambah-anggota{
+    position: absolute;
+    width: 120px;
+    height: 48px;
+    left: 1628px;
+    top: 110px;
+    text-align: center !important;
+    align-items: center !important;
+
+    background: #24CFCB !important;
+    border-radius: 10px !important;
+    border: none;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 32px;
+    /* identical to box height */
+
+    color: #FFFFFF;
+}
+

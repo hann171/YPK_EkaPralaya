@@ -2,6 +2,7 @@
 
 var response = require('./respon');
 var connection = require('./koneksi');
+var mysql = require('mysql');
 
 exports.index = function (req, res) {
     response.ok("Rest API is going", res)
@@ -61,4 +62,44 @@ exports.editAnggota = function (req, res) {
                 response.ok('berhasil mengupdate data',res)
             }
         });
+};
+
+exports.addAnggota = function (req, res) {
+    var post = {
+        nama_lengkap: req.body.nama_lengkap,
+        ttl: req.body.ttl,
+        agama: req.body.agama,
+        no_telp: req.body.noTelp,
+        pekerjaan: req.body.pekerjaan,
+        alamat: req.body.alamat,
+        status_kawin: req.body.status_kawin,
+        status_keanggotaan: req.body.status_keanggotaan,
+        status: req.body.status
+    }
+
+    var query = "SELECT nama_lengkap FROM ?? WHERE ??=?";
+    var table = ["anggota", "nama_lengkap", post.nama_lengkap];
+
+    query = mysql.format(query, table);
+    connection.query(query, function (error, rows) {
+        if (error) {
+            console.log(error);
+        }
+        else {
+            if (rows.length == 0) {
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["anggota"];
+                query = mysql.format(query, table);
+                connection.query(query, post, function (error, rows) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        response.ok("Anggota baru telah ditambahkan", res);
+                    }
+                });
+            } else {
+                response.ok("Anggota sudah terdaftar!", res);
+            }
+        }
+    })
 };

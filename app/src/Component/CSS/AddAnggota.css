@@ -1,10 +1,10 @@
 /* Daftar Anggota */
 .daftar_text{
     position: absolute;
-    width: 303px;
+    width: 500px;
     height: 57px;
-    left: 1054px;
-    top: 76px;
+    left: 361px;
+    top: 200px;
 
     font-family: Poppins;
     font-style: normal;
@@ -78,6 +78,9 @@
 .field{
     margin-bottom: 25px;
 }
+.field-status{
+    margin-bottom: 50px;
+}
 .fieldStatusKawin{
     margin-bottom: 10px;
 }
@@ -121,8 +124,6 @@
     width: 142px;
     height: 24px;
     right: 0;
-
-    margin-bottom: 10px;
 
     font-family: Poppins;
     font-style: normal;

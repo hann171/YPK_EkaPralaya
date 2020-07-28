@@ -13,4 +13,6 @@ module.exports = function(app){
         .delete(jsonku.hapusAnggota);
     app.route('/anggota/edit')
         .put(jsonku.editAnggota);
+    app.route('/anggota/tambah')
+        .post(jsonku.addAnggota);
 }

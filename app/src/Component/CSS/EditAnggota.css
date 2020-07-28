@@ -1,0 +1,16 @@
+.nama_text{
+    position: absolute;
+    width: 500px;
+    height: 57px;
+    left: 361px;
+    top: 180px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 37.9px;
+    line-height: 57px;
+    /* identical to box height */
+
+    color: #1E96FC;
+}

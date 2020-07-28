@@ -28,7 +28,7 @@ export default class EditAnggota extends PureComponent {
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    ubahMahasiswa = (idAnggota) => {
+    ubahAnggota = (idAnggota) => {
         const data = qs.stringify({
             id_anggota: idAnggota,
             nama_lengkap: this.state.nama_lengkap,
@@ -139,7 +139,7 @@ export default class EditAnggota extends PureComponent {
                             </Row>
                         </FormGroup>
 
-                        <Button type="button" color="success" onClick={()=>this.ubahMahasiswa(this.state.id_anggota)}>UPDATE</Button>
+                        <Button type="button" color="success" onClick={()=>this.ubahAnggota(this.state.id_anggota)}>UPDATE</Button>
                     </Col>
                 </Form>
             </Container>
